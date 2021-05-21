@@ -1,0 +1,47 @@
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    
+}
+.main-header{
+    background-color:#EEE;
+}
+.hover1{
+    margin-left: 10px;
+    border-radius: 10px;
+    color: grey;
+}
+.hover1:hover{
+    background-color: whitesmoke;
+    color: black;
+}
+.search{
+    width: 35%;
+    border-radius: 10px;
+    border: none;
+}
+.slider-section{
+    height: 400px;
+}
+.slider-img{
+    height: 400px;
+}
+.discount{
+    font-size: 40px;
+    color: goldenrod;
+}
+.explore{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    height: 50px;
+    width: 60px;
+    background-color:teal;
+    color: whitesmoke;
+    padding: 10px 5px;
+}
+.explore:hover{
+    color:brown;
+}
+.footer-main{
+    background-color: grey;
+    color:white;
+}
