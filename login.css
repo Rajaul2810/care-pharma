@@ -1,0 +1,21 @@
+.regi.error input{
+    border-color: red;
+}
+.regi.success input{
+    border-color:green;
+}
+.regi small{
+    color: red;
+    position:absolute;
+    visibility: hidden;
+    
+}
+.regi.error small{
+    margin-bottom: 10px;
+    visibility: visible;
+   
+}
+.regi.error{
+   padding-bottom: 20px;
+}
+

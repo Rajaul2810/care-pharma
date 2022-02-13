@@ -15,9 +15,9 @@
 
 <body>
     <header class="main-header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <nav class="navbar navbar-expand-lg navbar bg-primary">
             <div class="container-fluid ">
-                <a class="navbar-brand" href="#">BD-Care-Pharma</a>
+                <a class="navbar-brand hover1" href="#">BD-Care-Pharma</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,9 +34,17 @@
                         <li class="nav-item hover1">
                             <a class="nav-link" href="#">Order List</a>
                         </li>
-                        <li class="nav-item hover1">
-                            <a class="nav-link" href="#">Dashboard</a>
-                        </li>
+
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                              Dashboard
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="/addMedicine.html">Add Medicine</a></li>
+                              <li><a class="dropdown-item" href="/AddHealth.html">Add Healthcare Product</a></li>
+                              <li><a class="dropdown-item" href="#">Manage Product</a></li>
+                            </ul>
+                          </div>
                         <li class="nav-item hover1">
                             <a class="nav-link" href="login.html">Registration</a>
                         </li>
@@ -49,7 +57,7 @@
 
             </div>
         </nav>
-        <div class="input-group mb-3 d-flex justify-content-center ">
+        <div class="input-group d-flex justify-content-center ">
             <input type="text" class=" search  mt-3 shadow p-3 mb-3 bg-body rounded" placeholder="Enter search products"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-primary mt-3 shadow p-3 mb-3  rounded" type="button"

@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Document</title>
     <link rel="stylesheet" href="costom.css">
-    <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -50,39 +49,32 @@
         </nav>
        
     </header>
-    <main>
-        <section class="mt-5 ms-5 me-5 mb-5 pb-3" style="border: 1px solid lightgrey;">
-            <h2 class="text-center text-secondary pt-3">Registration</h2>
-            <div class="d-flex justify-content-center">
-                <div class="w-50">
-                    <form id="form">
-                        <div class="mb-3 regi">
-                        <label for="exampleFormControlInput1" class="form-label">Name</label>
-                        <input type="text" id="username" class="form-control" id="exampleFormControlInput1" placeholder="Enter name" value="">
-                          <small>error massage</small>
-                    </div>
-                      <div class="mb-3  regi">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" id="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter email" value="">
-                        <small>error massage</small>
-                      </div>
-                      <div class="mb-3  regi">
-                        <label for="exampleFormControlInput1" class="form-label">Password</label>
-                        <input type="password" id="password"  class="form-control" id="exampleFormControlInput1" placeholder="password" value="">
-                        <small>error massage</small>
-                      </div>
-                      <div class="mb-3 regi">
-                        <label for="exampleFormControlTextarea1" class="form-label">Confirm Password</label>
-                        <input type="password" id="password2" class="form-control" id="exampleFormControlInput1" placeholder="confirm password" value="">
-                        <small>error massage</small>
-                        </div>
-                      <button class="mt-3" style="background-color: teal; color: white;" id="addUser" type="submit">Registration</button>
-                    </form> <br>
-                <a style="color: red;" href="login2.html">Already create an account? Login</a>
+
+    <section class="mt-5 ms-5 me-5 mb-5 pb-3" style="border: 1px solid lightgrey;">
+        <h2 class="text-center text-secondary pt-3">Add Medicine</h2>
+        <div class="d-flex justify-content-center">
+            <div class="w-50">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Product Name</label>
+                    <input type="text" id="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter product name">
+                   
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Product Price</label>
+                    <input type="text" id="price" class="form-control" id="exampleFormControlInput1" placeholder="Product price">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Product Discount</label>
+                    <input type="text" id="discount" class="form-control" id="exampleFormControlInput1" placeholder="Product discount (%)">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Photo Link</label>
+                    <input type="text" id="link" class="form-control" id="exampleFormControlInput1" placeholder="Photo link">
+                  </div>
+                  <button  id="addProduct" style="background-color: teal; color: white;" type="submit">Submit</button>
             </div>
-        </section>
-    </main>
-    
+        </div>
+    </section>
 
     <footer class="footer-main text-center" style="background-color: gray; color: white;">
         <div class="row ms-3 mt-5 mb-5 pt-3">
@@ -118,10 +110,42 @@
         </div>
         <p class="test-secondary text-center pb-3">&copy; 2021 BD-Care-Pharma. All Rights Reserved</p>
     </footer>
-    <script src="login.js"></script>
+    <script>
+        const addBtn = document.getElementById('addProduct');
+        addBtn.addEventListener('click',()=>{
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const discount = document.getElementById('discount').value;
+            const link = document.getElementById('link').value;
+            const medicine = {name,price,discount,link}
+            console.log(medicine)
+            if(name && price && discount && link){
+                fetch('http://localhost:4000/addMedicine',{
+                    method:'POST',
+                    body:JSON.stringify(medicine),
+                    headers:{"Content-type":"application/json"}
+                })
+                .then(res => res.json())
+                .then(data=> showAlert(data))
+
+            }else{
+                swal("Sorry!", "Incomplete Data", "warning");
+            }
+           
+        })
+        const showAlert = (data) =>{
+            const {massage} = data;
+            
+             if(massage==='Successfully Add Product'){
+                swal("Good job!", "Successfully Add Product", "success");
+            }else{
+                swal("Sorry!", "product do not add", "warning");
+            }
+        }
+    </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-    crossorigin="anonymous"></script>
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
 </body>
 </html>
